@@ -6,10 +6,15 @@ const useAxios = () => {
     const {token} = useContext(AuthContext);
     const axiosSecure =axios.create({
         baseURL:'http://localhost:5000',
-        headers:{
-            Authorization: token ? `Bearer${token}`: '',
-        },
+        
     });
+    axiosSecure.interceptors.request.use((config) => {
+        if(token){
+            config.headers.Authorization = `Bearer ${token}`;
+        }
+        return config;
+    });
+    
     return axiosSecure;
 };
 

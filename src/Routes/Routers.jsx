@@ -4,6 +4,7 @@ import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import Registration from "../Registration/Registration";
 import Home from "../Home/Home/Home";
 import Login from "../Login/Login";
+import AddEvent from "../AddEvent/AddEvent";
 
 
 
@@ -16,6 +17,10 @@ export const router = createBrowserRouter([
         {
             path:'/',
             element:<Home></Home>,
+        },
+        {
+          path:'/add-event',
+          element:<AddEvent></AddEvent>,
         },
      
       {
