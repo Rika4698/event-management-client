@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import useAxios from "../hooks/useAxios";
+import swal from 'sweetalert';
 
 
 const Registration = () => {
@@ -15,40 +16,53 @@ const Registration = () => {
     const navigate = useNavigate();
 
     const handleChange = (e) =>{
-        setForm({...from, [e.target.name]: e.target.value });
+        setForm({...form, [e.target.name]: e.target.value });
     };
 
     const handleSubmit = async (e) =>{
         e.preventDefault();
         try{
-            await asi
-        }
-    }
+            await axiosSecure.post('/api/auth/register', form);
+            swal({
+           text: "Registration done successfully",
+           icon: "success",
+           timer: 1600,
+            })
+            navigate('/login');
+        } catch (err) {
+    console.log(err);
+    swal({
+      text: err.response?.data?.msg || "Something went wrong",
+      icon: "error",
+    });
+  }
+    };
+
     return (
         <div className="my-10">
              <div className="max-w-lg mx-auto  bg-white  rounded-lg shadow-md px-8 py-10 flex flex-col items-center">
     <h1 className="text-xl font-bold text-center text-blue-600 font-serif mb-5 ">Welcome to EventNest</h1>
     <h3 className="text-lg font-bold text-center text-gray-700 font-serif mb-5 ">Create a account</h3>
 
-    <form  className="w-full flex flex-col gap-4">
+    <form onSubmit={handleSubmit} className="w-full flex flex-col gap-4">
       <div className="flex items-start flex-col justify-start">
         <label  className="text-sm text-gray-700  mr-2">User Name:</label>
-        <input type="text"  name="name" className="w-full px-3 bg-white py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-1 focus:ring-blue-500" placeholder="Enter User Name" required/>
+        <input onChange={handleChange} type="text"  name="name" className="w-full px-3 bg-white py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-1 focus:ring-blue-500" placeholder="Enter User Name" required/>
       </div>
 
       <div className="flex items-start flex-col justify-start">
         <label  className="text-sm text-gray-700  mr-2">Photo URL:</label>
-        <input type="url"  name="photo" className="w-full px-3  bg-white py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-1 focus:ring-blue-500" placeholder="Enter Photo URL" required/>
+        <input onChange={handleChange} type="url"  name="photo" className="w-full px-3  bg-white py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-1 focus:ring-blue-500" placeholder="Enter Photo URL" required/>
       </div>
 
       <div className="flex items-start flex-col justify-start">
         <label  className="text-sm text-gray-700  mr-2">Email:</label>
-        <input type="email"  name="email" className="w-full px-3  bg-white py-2 rounded-md border border-gray-300  focus:outline-none focus:ring-1 focus:ring-blue-500" placeholder="Enter Email" required/>
+        <input onChange={handleChange} type="email"  name="email" className="w-full px-3  bg-white py-2 rounded-md border border-gray-300  focus:outline-none focus:ring-1 focus:ring-blue-500" placeholder="Enter Email" required/>
       </div>
 
       <div className="flex items-start flex-col justify-start">
         <label  className="text-sm text-gray-700 mr-2">Password:</label>
-        <input type="password"  name="password" className="w-full px-3 bg-white py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-1 focus:ring-blue-500" placeholder="Enter password" required/>
+        <input onChange={handleChange} type="password"  name="password" className="w-full px-3 bg-white py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-1 focus:ring-blue-500" placeholder="Enter password" required/>
       </div>
 
      

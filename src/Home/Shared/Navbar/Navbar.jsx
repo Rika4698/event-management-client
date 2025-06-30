@@ -12,10 +12,15 @@ const Navbar = () => {
    
    
     const handleSignOut = () => {
+         if (typeof logOut !== 'function') {
+    console.error("logOut is not a function");
+    return;
+  }
       logOut()
-        .then()
-        .catch()
+  .then(() => console.log('Logged out'))
+  .catch(err => console.error('Logout error:', err));
     };
+
     const [isOpen, setIsOpen] = useState(false);
    const [isDropdownOpen, setDropdownOpen] = useState(false);
   
@@ -146,7 +151,7 @@ const Navbar = () => {
                   <span className="sr-only">Open user menu</span>
                   <img 
                     className="btn-circle w-12 h-12 lg:w-12 lg:h-12 rounded-full"
-                    src={user.photoURL}
+                    src={user.photo || 'https://i.ibb.co/F6nmnfQ/user-placeholder.png'}
                     alt=""
                   />
                 </button>
@@ -156,7 +161,7 @@ const Navbar = () => {
                   <div id="dropdownMenu" className="z-50 absolute -right-4 top-16   bg-white divide-y divide-gray-100 rounded-lg shadow-lg shadow-slate-600 drop-shadow-lg">
                       <div className="px-4 py-3 ">
                 <span className="block text-base xl:text-lg font-bold text-gray-900 ">
-                {user.displayName}
+                {user.name}
                 </span>
                 <span className="block text-sm text-gray-500 truncate  ">
                 {user.email}
@@ -168,7 +173,7 @@ const Navbar = () => {
             
 
 <li className="py-3 px-16">
-              <button onClick={handleSignOut} className="rounded-lg text-white bg-green-500    lg:w-28 lg:h-10 w-24 h-10 "  >
+              <button onClick={handleSignOut} className="rounded-lg text-white bg-red-500    lg:w-28 lg:h-10 w-24 h-10 "  >
                                 <BiLogOut className="  inline-flex text-xl   "></BiLogOut>
                                 
                                 <span className="ml-2 text-base">Logout</span></button>
