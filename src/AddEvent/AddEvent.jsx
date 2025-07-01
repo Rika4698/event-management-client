@@ -7,11 +7,13 @@ import swal from 'sweetalert';
 
 const AddEvent = () => {
     const {user} = useAuth();
+   
     const axiosSecure = useAxios();
     // const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
         title:'',
+        name:'',
         image:'',
         description:'',
         location:'',
@@ -38,7 +40,7 @@ const AddEvent = () => {
         }
 
         const [date, time] = formData.datetime.split('T');
-
+  
         const eventData = {
             title:formData.title,
             image:formData.image,
@@ -46,7 +48,7 @@ const AddEvent = () => {
             location:formData.location,
             date,
             time,
-            name:user?.name,
+            name:formData.name,
             attendeeCount:0,
             createdBy: user?._id || user?.id,
 
@@ -81,6 +83,17 @@ const AddEvent = () => {
               
                 type="text" name="title" placeholder="Enter Title" onChange={handleChange} value={formData.title}  required
                 className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500  focus:outline-none"
+              />
+            </div>
+
+             <div className="mb-4">
+              <label className="block text-base font-semibold text-gray-600 mb-2 lg:text-xl ">Your Name:</label>
+              <input
+                type="text"
+                name="name"
+                placeholder="Enter Your Name"
+                 onChange={handleChange} value={formData.name} 
+                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500  focus:outline-none " required
               />
             </div>
 
