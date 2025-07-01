@@ -1,4 +1,4 @@
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import useAxios from "../hooks/useAxios";
 import { useState } from "react";
@@ -9,7 +9,7 @@ const AddEvent = () => {
     const {user} = useAuth();
    
     const axiosSecure = useAxios();
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
         title:'',
@@ -61,6 +61,7 @@ const AddEvent = () => {
             text: 'Event Created Successfully ',
             icon: 'success',
           });
+          navigate('/my-event');
         
         } catch(err){
             console.log(err);

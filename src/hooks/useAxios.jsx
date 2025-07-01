@@ -5,7 +5,7 @@ import axios from 'axios';
 const useAxios = () => {
     const {token} = useContext(AuthContext);
     const axiosSecure =axios.create({
-        baseURL:'http://localhost:5000',
+        baseURL:'https://event-management-server-tau.vercel.app',
         
     });
     axiosSecure.interceptors.request.use((config) => {

@@ -46,7 +46,10 @@ const Navbar = () => {
                 className={({ isActive, isPending }) =>
                   isPending ? "pending" : isActive ?  "text-[#1163cd] font-bold text-lg font-serif " : "font-medium text-slate-800 text-lg font-serif "
                 }>Home</NavLink></li>
-               
+
+                {
+                !user ? "" : <>
+
                     <li className="group max-lg:border-b max-lg:py-3 px-3 relative"><NavLink to="/add-event" onClick={() => setIsOpen(false)}
                 className={({ isActive, isPending }) =>
                   isPending ? "pending" : isActive ?  "text-[#1163cd] font-bold text-lg font-serif " : "font-medium text-slate-800 text-lg font-serif "
@@ -61,6 +64,12 @@ const Navbar = () => {
                 className={({ isActive, isPending }) =>
                   isPending ? "pending" : isActive ?  "text-[#1163cd] font-bold text-lg font-serif " : "font-medium text-slate-800 text-lg font-serif "
                 }>My Event</NavLink></li>
+                </>}
+
+                 <li className="group max-lg:border-b max-lg:py-3 px-3 relative"><NavLink to="/about" onClick={() => setIsOpen(false)}
+                className={({ isActive, isPending }) =>
+                  isPending ? "pending" : isActive ?  "text-[#1163cd] font-bold text-lg font-serif " : "font-medium text-slate-800 text-lg font-serif "
+                }>About Us</NavLink></li>
 
                     <li className="group max-lg:border-b max-lg:py-3 px-3 relative"><NavLink to="/contact" onClick={() => setIsOpen(false)}
                 className={({ isActive, isPending }) =>

@@ -8,6 +8,9 @@ import AddEvent from "../AddEvent/AddEvent";
 import AllEvents from "../AllEvents/AllEvents";
 import MyEvent from "../MyEvent/MyEvent";
 import UpdateEvent from "../MyEvent/UpdateEvent";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import Contact from "../Contact/Contact";
+import About from "../About/About";
 
 
 
@@ -23,19 +26,27 @@ export const router = createBrowserRouter([
         },
         {
           path:'/add-event',
-          element:<AddEvent></AddEvent>,
+          element:<PrivateRoute><AddEvent></AddEvent></PrivateRoute>,
         },
         {
           path:'/events',
-          element:<AllEvents></AllEvents>,
+          element:<PrivateRoute><AllEvents></AllEvents></PrivateRoute>,
         },
         {
           path:'/my-event',
-          element:<MyEvent></MyEvent>,
+          element:<PrivateRoute><MyEvent></MyEvent></PrivateRoute>,
         },
         {
           path:'/update/:id',
           element:<UpdateEvent></UpdateEvent>,
+        },
+        {
+          path:'/about',
+          element:<About></About>,
+        },
+        {
+           path:'/contact',
+           element:<Contact></Contact>,
         },
      
       {
