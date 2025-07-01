@@ -6,6 +6,8 @@ import Home from "../Home/Home/Home";
 import Login from "../Login/Login";
 import AddEvent from "../AddEvent/AddEvent";
 import AllEvents from "../AllEvents/AllEvents";
+import MyEvent from "../MyEvent/MyEvent";
+import UpdateEvent from "../MyEvent/UpdateEvent";
 
 
 
@@ -25,7 +27,15 @@ export const router = createBrowserRouter([
         },
         {
           path:'/events',
-          element:<AllEvents></AllEvents>
+          element:<AllEvents></AllEvents>,
+        },
+        {
+          path:'/my-event',
+          element:<MyEvent></MyEvent>,
+        },
+        {
+          path:'/update/:id',
+          element:<UpdateEvent></UpdateEvent>,
         },
      
       {

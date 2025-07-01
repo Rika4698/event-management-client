@@ -129,7 +129,7 @@ const AllEvents = () => {
           No events found.
         </p>
       ) : (
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mx-8">
+      <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6 mx-3 sm:mx-6 my-10 ">
         {events && events.map(event => <AllEventsCard key={event._id} events={event} handleJoin={handleJoin}></AllEventsCard>)}
       </div>)}
     </div>
